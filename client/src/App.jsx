@@ -3,14 +3,17 @@ import { AppBar, Container, Grid, Typography, Grow } from '@mui/material';
 import memories from './images/memories.png';
 import Posts from './components/Posts/Posts';
 import Form from './components/Form/Form';
+import useStyles from './styles.js';
 
 
 const App = () => {
+  const styleClass = useStyles();
   return (
     <Container maxWidth="lg">
-      <AppBar position='static' color='inherit' >
-        <Typography variant='h2' align='center' > Memories </Typography>
-        <img src={memories} alt='memories' height=' 60' />
+      <AppBar className={styleClass.appBar} position='static' color='inherit' >
+        <Typography className={styleClass.heading} variant='h2' align='center' > Memories
+          <img className={styleClass.image} src={memories} alt='memories' height='50'  />
+        </Typography>
       </AppBar>
       <Grow in>
         <Container>
@@ -24,7 +27,6 @@ const App = () => {
           </Grid>
         </Container>
       </Grow>
-
     </Container>
   )
 }
