@@ -13,5 +13,14 @@ export const getPosts = async (req, res) => {
 
 // CREATE POST METHOD
 export const createPost = (req, res) => {
-res.send('Post Creation.')
+    // const post = req.body;
+    // const newPost = new PostMessage(post)  tanımlama alanını "try"  blogunun dışında da yapabiliriz.
+    try {
+        const newPost = new PostMessage(req.body);
+        newPost.save();
+        res.status(200).json(newPost);
+
+    } catch (error) {
+        res.status(409).json({ message: error.message })
+    }
 }
