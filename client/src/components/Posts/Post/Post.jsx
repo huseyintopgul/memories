@@ -4,7 +4,7 @@ const Post = () => {
 
     return (
         <>
-<h1>POST</h1>
+            <h1>POST</h1>
         </>
     )
 }
