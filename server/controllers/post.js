@@ -11,6 +11,7 @@ export const getPosts = async (req, res) => {
     }
 };
 
+
 // CREATE POST METHOD
 export const createPost = (req, res) => {
     // const post = req.body;

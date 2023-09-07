@@ -1,6 +1,4 @@
 import { combineReducers } from "redux";
-import {postReducers} from './PostReducers.js';
+import posts from './PostReducers';
 
-export const reducers = combineReducers({
-    postReducers
-})
+export const reducers = combineReducers({ posts })
