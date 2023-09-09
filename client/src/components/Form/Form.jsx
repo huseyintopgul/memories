@@ -8,9 +8,7 @@ import { createPost } from '../../redux/actions/PostActions';
 
 
 const Form = () => {
-    const styleClass = useStyles();
     const dispatch = useDispatch();
-
     const [postData, setPostData] = useState({
         creator: '',
         title: '',
@@ -18,6 +16,8 @@ const Form = () => {
         tags: '',
         selectedFiles: ''
     });
+    const styleClass = useStyles();
+
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(createPost(postData));

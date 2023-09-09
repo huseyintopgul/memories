@@ -1,7 +1,7 @@
 {
   "name": "client",
   "private": true,
-  "proxy":"http://localhost/5173",
+  "proxy": "http://localhost/8000",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -13,6 +13,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.8",
     "@mui/material": "^5.14.7",
     "@mui/styles": "^5.14.7",
     "axios": "^1.5.0",

@@ -11,10 +11,11 @@ import {getPosts} from './redux/actions/PostActions'
 const App = () => {
   const styleClass = useStyles();
   const dispatch = useDispatch();
+  
 
   useEffect(() => {
     dispatch(getPosts());
-  }, [dispatch])
+  }, [dispatch]);
   return (
     <Container maxWidth="lg">
       <AppBar className={styleClass.appBar} position='static' color='inherit' >

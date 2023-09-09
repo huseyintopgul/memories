@@ -5,7 +5,7 @@ export default (posts = [], action) => {
         case actionTypes.GET_ALL_POST:
             return action.payload;
         case actionTypes.CREATE_POST:
-            return [...posts, action.payload]
+            return [...posts, action.payload];
         default:
             return posts;
     }

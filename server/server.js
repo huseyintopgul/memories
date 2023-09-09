@@ -6,15 +6,24 @@ import bodyParser from 'body-parser';
 import postRoutes from './routes/posts.js';
 // express
 const app = express();
+const port = process.env.PORT || 8000;
 // middlewares
-app.use(bodyParser.json({ limit: '30mb', extend: true }))
+app.use(bodyParser.json({ limit: '30mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors());
 app.use('/posts', postRoutes);
+
 // database connection
-const CONNECTION_URL = 'mongodb+srv://huseyintopgul1:memories@memories.pxhhdjt.mongodb.net/';
-const PORT = process.env.PORT || 3000;
+const CONNECTION_URL = 'mongodb+srv://huseyintopgul1:memories@memories.pxhhdjt.mongodb.net';
+// mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+//     .then(() => app.listen(port, () => console.log(`Server running on port: ${port}`)))
+//     .catch((error) => console.log(`Port ${port} did not connect!`))
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => app.listen(PORT, () => console.log(`Server running on port: ${PORT}`)))
-    .catch((error) => console.log(`Port ${PORT} did not connect!`))
+    .then(() => {
+        console.log('MongoDB connection successful');
+        app.listen(port, () => {
+            console.log(`Server running on port: ${port}`);
+        });
+    })
+    .catch((error) => console.log(`MongoDB connection failed: ${error.message}`));
 mongoose.set('findOneAndUpdate', false, 'findOneAndDelete', false);
