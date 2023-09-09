@@ -10,6 +10,7 @@ import { createPost, updatePost } from '../../redux/actions/PostActions';
 const Form = ({ currentId, setCurrentId }) => {
     const dispatch = useDispatch();
     const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
+    const styleClass = useStyles();
     const [postData, setPostData] = useState({
         creator: '',
         title: '',
@@ -17,7 +18,6 @@ const Form = ({ currentId, setCurrentId }) => {
         tags: '',
         selectedFiles: ''
     });
-    const styleClass = useStyles();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -43,15 +43,15 @@ const Form = ({ currentId, setCurrentId }) => {
     }, [post])
     return (
         <Paper className={styleClass.paper}>
-            <form autoComplete="off" noValidate className={styleClass.form} onSubmit={handleSubmit}>
+            <form autoComplete="off" noValidate className={`${styleClass.root} ${styleClass.form}`} onSubmit={handleSubmit}>
                 <Typography variant="h6">{currentId ? 'Anıyı Düzenle' : 'Anı Oluştur'} </Typography>
-                <TextField name="creator" variant="outlined" label="Creator" fullWidth value={postData.creator} onChange={(e) => setPostData({ ...postData, creator: e.target.value })} />
-                <TextField name="title" variant="outlined" label="Title" fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })} />
-                <TextField name="message" variant="outlined" label="Message" fullWidth multiline rows={4} value={postData.message} onChange={(e) => setPostData({ ...postData, message: e.target.value })} />
-                <TextField name="tags" variant="outlined" label="Tags (coma separated)" fullWidth value={postData.tags} onChange={(e) => setPostData({ ...postData, tags: e.target.value.split(',') })} />
+                <TextField name="creator" variant="outlined" label="Ad Soyad" fullWidth value={postData.creator} onChange={(e) => setPostData({ ...postData, creator: e.target.value })} />
+                <TextField name="title" variant="outlined" label="Başlık" fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })} />
+                <TextField name="message" variant="outlined" label="Açıklama" fullWidth multiline rows={4} value={postData.message} onChange={(e) => setPostData({ ...postData, message: e.target.value })} />
+                <TextField name="tags" variant="outlined" label="Etiketler" fullWidth value={postData.tags} onChange={(e) => setPostData({ ...postData, tags: e.target.value.split(',') })} />
                 <div className={styleClass.fileInput}><FileBase type="file" multiple={false} onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })} /></div>
-                <Button className={styleClass.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
-                <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
+                <Button className={styleClass.button} variant="contained" color='success' size="medium" type="submit" fullWidth> Onayla </Button>
+                <Button className={styleClass.button} variant="contained" color='secondary' size="medium" onClick={clear} fullWidth> Temizle </Button>
             </form>
         </Paper>
     )

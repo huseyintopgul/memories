@@ -42,16 +42,27 @@ export const updatePost = async (req, res) => {
 };
 // DELETE POST CONTROLER
 export const deletePost = async (req, res) => {
-    const { id } = req.params;
-    if (!mongoose.Types.ObjectId.isValid(id)) {
+    const { id: _id } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(_id)) {
         return (
             res.status(404).send('Anı silinemedi.')
         )
     }
-    await PostMessage.findByIdAndRemove(id);
+    await PostMessage.findByIdAndRemove(_id);
     res.json('Silme işlemi başarılı.')
 };
-
+// LIKE POST CONTROLER
+export const likePost = async (req, res) => {
+    const { id } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return (
+            res.status(404).send('Beğeni işlemi gerçekleşmedi.')
+        )
+    }
+    const post = await PostMessage.findById(id);
+    const updatePost = await PostMessage.findByIdAndUpdate(id, { likeCount: post.likeCount + 1 }, { new: true });
+    res.json(updatePost);
+};
 
 
 export default router;

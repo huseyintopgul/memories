@@ -17,9 +17,16 @@ export default makeStyles({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    borderRadius: '15px',
+    borderRadius: '10px',
     height: '100%',
     position: 'relative',
+  },
+  description: {
+    wordWrap: 'break-word',
+    display: '-webkit-box',
+    '-webkit-line-clamp': 5,
+    '-webkit-box-orient': 'vertical',
+    overflow: 'scroll',
   },
   overlay: {
     position: 'absolute',

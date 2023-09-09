@@ -9,7 +9,9 @@ export default (posts = [], action) => {
         case actionTypes.UPDATE_POST:
             return posts.map((post) => post._id === action.payload._id ? action.payload : post);
         case actionTypes.DELETE_POST:
-            return posts.filter((post) => post._id !== action.payload)
+            return posts.filter((post) => post._id !== action.payload);
+        case actionTypes.LIKE_POST:
+            return posts.map((post) => post._id !== action.payload._id ? action.payload : post)
         default:
             return posts;
     }
