@@ -11,9 +11,17 @@ export default makeStyles(() => ({
     },
     heading: {
         color: 'rgba(0,183,255, 1)',
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 5
     },
     image: {
         marginLeft: '15px '
-
+    },
+    heading: {
+        color: 'rgba(0,183,255, 1)',
     },
 }));

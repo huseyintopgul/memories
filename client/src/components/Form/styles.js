@@ -19,8 +19,5 @@ export default makeStyles((theme) => ({
     width: '97%',
     margin: '10px 0',
   },
-  button: {
-    marginTop: '5px',
-    marginBottom: '5px',
-  },
+
 }));
