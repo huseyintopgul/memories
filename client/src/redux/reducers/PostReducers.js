@@ -7,7 +7,9 @@ export default (posts = [], action) => {
         case actionTypes.CREATE_POST:
             return [...posts, action.payload];
         case actionTypes.UPDATE_POST:
-            return posts.map((post) => post._id === action.payload._id ? action.payload : post)
+            return posts.map((post) => post._id === action.payload._id ? action.payload : post);
+        case actionTypes.DELETE_POST:
+            return posts.filter((post) => post._id !== action.payload)
         default:
             return posts;
     }

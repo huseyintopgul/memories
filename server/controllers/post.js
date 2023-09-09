@@ -14,9 +14,7 @@ export const getPosts = async (req, res) => {
         res.status(404).json({ message: error.message })
     }
 };
-
-
-// CREATE POST CONTROL
+// CREATE POST CONTROLER
 export const createPost = async (req, res) => {
     const { title, message, selectedFile, creator, tags } = req.body;
 
@@ -30,8 +28,7 @@ export const createPost = async (req, res) => {
         res.status(409).json({ message: error.message });
     }
 };
-
-// UPDATE POST CONTROL
+// UPDATE POST CONTROLER
 export const updatePost = async (req, res) => {
     const { id: _id } = req.params;
     const post = req.body;
@@ -40,9 +37,21 @@ export const updatePost = async (req, res) => {
             res.status(404).send("İlgili anı bulunamadı.")
         )
     };
-    const updatePost = await PostMessage.findByIdAndUpdate(_id, post, { new: true });
+    const updatePost = await PostMessage.findByIdAndUpdate(_id, { ...post, _id }, { new: true });
     res.json(updatePost);
 };
+// DELETE POST CONTROLER
+export const deletePost = async (req, res) => {
+    const { id } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return (
+            res.status(404).send('Anı silinemedi.')
+        )
+    }
+    await PostMessage.findByIdAndRemove(id);
+    res.json('Silme işlemi başarılı.')
+};
+
 
 
 export default router;

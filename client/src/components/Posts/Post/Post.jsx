@@ -8,6 +8,7 @@ import moment from 'moment';
 import { useDispatch } from 'react-redux';
 
 import useStyle from './styles.js';
+import { deletePost } from '../../../redux/actions/PostActions.js';
 
 
 const Post = ({ post, setCurrentId }) => {
@@ -23,20 +24,21 @@ const Post = ({ post, setCurrentId }) => {
             </div>
             <div className={styleClass.overlay2}>
                 <Button style={{ color: 'white' }} size='small' onClick={() => setCurrentId(post._id)}>
-                    <EditNoteIcon fontSize="large" />
+                    <EditNoteIcon fontSize="medium" />
                 </Button>
             </div>
             <div className={styleClass.details}>
                 <Typography variant="body2" color="textSecondary" component="h2">{post.tags.map((tag) => `#${tag} `)}</Typography>
             </div>
+                <Typography className={styleClass.title} gutterBottom variant="h5">{post.title}</Typography>
             <CardContent>
-                <Typography className={styleClass.title} gutterBottom variant="h5">{post.message}</Typography>
+                <Typography   gutterBottom variant="h5">{post.message}</Typography>
             </CardContent>
             <CardActions className={styleClass.cardActions}>
                 <Button size="small" color="primary" onClick={() => {}}>
                     <ThumbUpAltIcon fontSize="small" /> Like {post.likeCount}
                 </Button>
-                <Button size="small" color="primary" onClick={() =>{}}>
+                <Button size="small" color="primary" onClick={() =>dispatch(deletePost(post._id))}>
                     <DeleteIcon fontSize="small" /> Delete
                 </Button>
             </CardActions>
