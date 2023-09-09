@@ -26,6 +26,12 @@ export default makeStyles({
     top: '20px',
     left: '20px',
     color: 'white',
+    maxWidth: '65%',
+    wordWrap: 'break-word',
+    display: '-webkit-box',
+    '-webkit-line-clamp': 2,
+    '-webkit-box-orient': 'vertical',
+    overflow: 'hidden',
   },
   overlay2: {
     position: 'absolute',

@@ -16,7 +16,7 @@ export const getPosts = async (req, res) => {
 };
 
 
-// CREATE POST METHOD
+// CREATE POST CONTROL
 export const createPost = async (req, res) => {
     const { title, message, selectedFile, creator, tags } = req.body;
 
@@ -25,13 +25,24 @@ export const createPost = async (req, res) => {
     try {
         await newPostMessage.save();
 
-        res.status(201).json(newPostMessage );
+        res.status(201).json(newPostMessage);
     } catch (error) {
         res.status(409).json({ message: error.message });
     }
 };
 
-
+// UPDATE POST CONTROL
+export const updatePost = async (req, res) => {
+    const { id: _id } = req.params;
+    const post = req.body;
+    if (!mongoose.Types.ObjectId.isValid(_id)) {
+        return (
+            res.status(404).send("İlgili anı bulunamadı.")
+        )
+    };
+    const updatePost = await PostMessage.findByIdAndUpdate(_id, post, { new: true });
+    res.json(updatePost);
+};
 
 
 export default router;

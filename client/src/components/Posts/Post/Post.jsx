@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import EditNoteIcon from '@mui/icons-material/EditNote';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 import moment from 'moment';
@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 import useStyle from './styles.js';
 
 
-const Post = ({ post }) => {
+const Post = ({ post, setCurrentId }) => {
     const styleClass = useStyle();
     const dispatch = useDispatch();
 
@@ -22,8 +22,8 @@ const Post = ({ post }) => {
                 <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
             </div>
             <div className={styleClass.overlay2}>
-                <Button style={{ color: 'white' }} size='small' onClick={() => { }}>
-                    <MoreHorizIcon fontSize="default" />
+                <Button style={{ color: 'white' }} size='small' onClick={() => setCurrentId(post._id)}>
+                    <EditNoteIcon fontSize="large" />
                 </Button>
             </div>
             <div className={styleClass.details}>
