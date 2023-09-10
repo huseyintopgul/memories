@@ -16,7 +16,7 @@ const Form = ({ currentId, setCurrentId }) => {
         title: '',
         message: '',
         tags: '',
-        selectedFiles: ''
+        selectedFile: ''
     });
 
     const handleSubmit = (e) => {
@@ -25,7 +25,7 @@ const Form = ({ currentId, setCurrentId }) => {
             dispatch(updatePost(currentId, postData));
         } else {
             dispatch(createPost(postData));
-        }
+        };
         clear();
     };
     const clear = () => {
@@ -35,7 +35,7 @@ const Form = ({ currentId, setCurrentId }) => {
             title: '',
             message: '',
             tags: '',
-            selectedFiles: ''
+            selectedFile: ''
         })
     };
     useEffect(() => {
@@ -49,8 +49,8 @@ const Form = ({ currentId, setCurrentId }) => {
                 <TextField name="title" variant="outlined" label="Başlık" fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })} />
                 <TextField name="message" variant="outlined" label="Açıklama" fullWidth multiline rows={4} value={postData.message} onChange={(e) => setPostData({ ...postData, message: e.target.value })} />
                 <TextField name="tags" variant="outlined" label="Etiketler" fullWidth value={postData.tags} onChange={(e) => setPostData({ ...postData, tags: e.target.value.split(',') })} />
-                <div className={styleClass.fileInput}><FileBase type="file" multiple={false} onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })} /></div>
-                <Button style={{ marginBottom: '10px' }} variant="contained" color='success' size="medium" type="submit" fullWidth> Onayla </Button>
+                <FileBase className={styleClass.fileInput} type="file" multiple={false} onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })} />
+                <Button style={{ marginBottom: '10px', marginTop: '10px' }} variant="contained" color='success' size="medium" type="submit" fullWidth> Onayla </Button>
                 <Button variant="contained" color='secondary' size="medium" onClick={clear} fullWidth> Temizle </Button>
             </form>
         </Paper>
