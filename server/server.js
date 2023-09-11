@@ -15,9 +15,7 @@ app.use('/posts', postRoutes);
 
 // database connection
 const CONNECTION_URL = 'mongodb+srv://huseyintopgul1:memories@memories.pxhhdjt.mongodb.net';
-// mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-//     .then(() => app.listen(port, () => console.log(`Server running on port: ${port}`)))
-//     .catch((error) => console.log(`Port ${port} did not connect!`))
+
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log('MongoDB connection successful');
