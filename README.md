@@ -177,7 +177,7 @@ https://my-memories-client.onrender.com/
 
 ## Screenshots #Mobile Screen
 <img width="450" height="700" alt="mb-1" src="https://github.com/huseyintopgul/memories/assets/124911450/f66f1c8b-6c9d-4283-b262-50a13def03b4">
-<img width="450" height="700" alt="mbl" src="https://github.com/huseyintopgul/memories/assets/124911450/e5951fa4-51e9-4f1e-b110-52a0a970b1b2">
+<img width="848"  alt="mbl" src="https://github.com/huseyintopgul/memories/assets/124911450/e5951fa4-51e9-4f1e-b110-52a0a970b1b2">
 
 ## Screenshots #Full Screen
 <img width="1082"  alt="m-3" src="https://github.com/huseyintopgul/memories/assets/124911450/4418ba69-6252-479a-a1ec-2a46ad277aed">
